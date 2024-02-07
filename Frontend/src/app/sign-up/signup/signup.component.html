@@ -1,0 +1,55 @@
+<h1>Register HERE:</h1>
+<div class="container">
+  <div style="color: red;" *ngIf="errorMessage">{{ errorMessage }}</div>
+    <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()" nz-form>
+      <nz-form-item>
+        <nz-form-label>Name:</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="name" placeholder="Enter Name" />
+          <div *ngIf="signUpForm.get('name').invalid && signUpForm.get('name').touched" class="error-message">
+            {{ getNameErrors() }}
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+  
+      <nz-form-item>
+        <nz-form-label>Email:</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="email" placeholder="Enter Email" />
+          <div *ngIf="signUpForm.get('email').invalid && signUpForm.get('email').touched" class="error-message">
+            {{ getEmailErrors() }}
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+  
+      <nz-form-item>
+        <nz-form-label>Password:</nz-form-label>
+        <nz-form-control>
+          <div class="password">
+            <input nz-input formControlName="password" [type]="showpassword ? 'text' : 'password'" placeholder="Enter Password" />
+            <button nz-button type="button" (click)="showPassword()">{{ visiblePassword }}</button>
+          </div>
+          <div *ngIf="signUpForm.get('password').invalid && signUpForm.get('password').touched" class="error-message">
+            Please Enter valid Password!
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+  
+      <nz-form-item>
+        <nz-form-label>Re-enter Password:</nz-form-label>
+        <nz-form-control>
+          <div class="password">
+            <input nz-input formControlName="rePassword" [type]="showRepassword ? 'text' : 'password'" placeholder="Re-enter Password" />
+            <button nz-button type="button" (click)="showRePassword()">{{ visibleRepassword }}</button>
+          </div>
+          <div *ngIf="signUpForm.get('rePassword').invalid && signUpForm.get('rePassword').touched" class="error-message">
+            Password did not Match!
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+  
+      <nz-form-item>
+        <button nz-button [nzType]="'primary'" [disabled]="signUpForm.invalid" type="submit">Sign Up</button>
+      </nz-form-item>
+    </form>
+  </div>

@@ -1,0 +1,35 @@
+<div class="app-wrapper">
+  <div class="form">
+    <h1 style="color: #000000;">Product Info</h1>
+    <label class="label"><b>ID:</b></label> <br>
+    <input *ngIf="!disable" type="number" [(ngModel)]="id" placeholder="Enter product id"><br>
+    <div *ngIf="disable"><input disabled type="number" [(ngModel)]="id" placeholder="Enter product id"> <br></div>
+
+    <label><b>PRODUCT NAME:</b></label> <br>
+    <input type="text" [(ngModel)]="name" placeholder="Enter product name"><br>
+    <label><b>IMG:</b></label> <br>
+    <input type="text" [(ngModel)]="imagePath" placeholder="Enter image url"><br>
+
+    <label><b>PRODUCT QUANTITY:</b></label> <br>
+    <input *ngIf="!disable" type="number" [(ngModel)]="availableQuantity" placeholder="Enter product quantity"> <br>
+    <div *ngIf="disable"> <input disabled type="number" [(ngModel)]="availableQuantity"
+        placeholder="Enter product quantity"> </div><br>
+
+    <label><b>PRODUCT PRICE:</b></label> <br>
+    <input type="number" [(ngModel)]="price" placeholder="Enter product price"><br>
+    <label><b>CHOOSE RESTAURANT:</b></label><br>
+    <select [(ngModel)]="restType">
+      <option value="A">A</option>
+      <option value="B">B</option>
+      <option value="C">C</option>
+      <option value="D">D</option>
+    </select><br><br><br>
+    <div class="buttons">
+      <button *ngIf="!disable" (click)="onSubmit()" class="submitbtn">Submit</button>
+      <button *ngIf="disable" (click)="onUpdate()" class="submitbtn">Update</button>
+
+      <button (click)="onCancel()"  class="cancelbtn">Cancel</button>
+    </div>
+
+  </div>
+</div>

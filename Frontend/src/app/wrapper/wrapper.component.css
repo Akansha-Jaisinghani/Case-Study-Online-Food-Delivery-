@@ -1,0 +1,98 @@
+.container{
+    margin: 0 auto;
+    width: 100%;
+}
+
+
+.header {
+    overflow: hidden;
+    background-color: #f1f1f1;
+    padding: 0px 10px;
+    align-items: center;
+  }
+  
+  .header a {
+    float: left;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px; 
+    font-weight: bold;
+    line-height: 25px;
+    border-radius: 4px;
+    margin-top: 20px;
+  }
+
+  .cart{
+      margin-left: -40px;
+      margin-top: 30px;
+      float: left;
+}
+
+  .header a.logo {
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  .header a:hover {
+    background-color: grey;
+    color: black;
+  }
+
+  .header a.active {
+    background-color: dodgerblue;
+    color: white;
+  }
+  
+  .header-right {
+    float: right;
+  }
+  
+
+select{
+    background-color: black;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    width: 180px;
+    padding: 10px;
+    margin-top: -10px;
+}
+
+select option:hover{
+    background-color: grey;
+}
+
+.buttons{
+    margin-top: 20px;
+    display: flex;
+}
+
+select option{
+    background-color:white ;
+    color: black;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 10px;
+}
+
+
+
+.func{
+    width: 150px;
+    height: 25px;
+    background-color:black;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    margin-left: 50px;
+    border-radius: 10px;
+}
+
+
+button:hover{
+    opacity: 0.8;
+}
+

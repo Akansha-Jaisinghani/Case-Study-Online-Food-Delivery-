@@ -1,0 +1,33 @@
+<h1>LOGIN HERE:</h1>
+<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+  <div class="container">
+    <div style="color: red;" *ngIf="errorMessage">{{ errorMessage }}</div>
+    <nz-form-item>
+      <nz-form-label for="eml" nzRequired>Email</nz-form-label>
+      <nz-form-control>
+        <input nz-input formControlName="email" placeholder="Enter email" id="eml" required>
+      </nz-form-control>
+      <div style="color: red;" *ngIf="loginForm.controls.email.invalid && loginForm.controls.email.touched">
+        {{ getUserErrors() }}
+      </div>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label for="psw" nzRequired>Password</nz-form-label>
+      <nz-form-control>
+        <input nz-input type="password" formControlName="password" placeholder="Enter Password" id="psw" required>
+      </nz-form-control>
+      <div style="color: red;" *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.touched">
+        {{ getPasswordErrors() }}
+      </div>
+    </nz-form-item>
+
+    <div style="color: red;" *ngIf="valid">Incorrect Details!</div>
+
+    <nz-form-item>
+      <button nz-button nzType="primary" type="submit">Login</button>
+      <a [routerLink]="['/signup']">Sign up</a> <!-- Changed from 'New User' button to 'Sign up' link -->
+    </nz-form-item>
+  </div>
+
+</form>

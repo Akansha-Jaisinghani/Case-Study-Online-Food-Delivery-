@@ -1,0 +1,41 @@
+<form  nz-form [formGroup]="validateForm" style="margin-top: 20px; text-align:center;" (submit)="submitForm()">
+<input  nz-input placeholder="Enter Restaurant name to search" nzSize="large" style="width: 20%;" formControlName="title" />
+<button  nz-button [nzSize]="size" nzType="primary" nzSize="large" style="margin-left: 15px;"
+[disabled]="validateForm.invalid">Search</button>
+</form>
+
+
+<div style="background-color: #F8F8F8; min-height: 91vh;margin-top: 20px;">
+    <div style="padding-top: 10px;"></div>
+    <div style="margin-top:10px;" class="child" *ngFor="let restaurant of restaurants">
+        <div nz-row>
+          <!--  <div nz-col nzSpan="8">
+                <img class="profile" style="height: 130px; width: 200px; border-radius: 10px;" 
+                [src]="restaurant.img" alt="profile" />
+            </div>-->
+
+                <div nz-col nzSpan="16">
+
+                    <h2 style="cursor: pointer;  color: tomato;">
+
+                        {{restaurant.restaurantName}}</h2>
+
+                    <hr>
+                    <h5>Description: <b>{{restaurant.description}}</b></h5>
+                    <hr>
+                  
+
+                    <div style="float: right;">
+                        <button nzSize="small" routerLink="/admin/restaurant/{{restaurant.restaurantId}}" nz-button nzType="primary">Update Restaurant</button>
+                        <button style="margin-left: 10px;" nzSize="small" routerLink="/admin/{{restaurant.restaurantId}}/view_dishes" nz-button nzType="primary">View Products</button>
+                        <button style="margin-left: 10px;" routerLink="/admin//{{restaurant.restaurantId}}/addDish" nzSize="small" nz-button nzType="primary">Post Product</button>
+                        <button style="margin-left: 10px;" (click)="openConfirmationDialog(restaurant.restaurantId)" nzSize="small" nz-button nzType="primary">Delete Restaurant</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>

@@ -1,0 +1,36 @@
+<h2>Your Cart</h2>
+
+
+<div class="main">
+
+    <ng-container *ngFor="let product of cartArray; let i=index">
+
+
+        <div class="productInfo">
+            <img src="{{product.imagePath}}" alt="error" width="40%">
+            <div class="details">
+                <p>Product-{{product?.id ? product?.id : "N/A"}}</p>
+                <h1>{{product?.name ? product?.name : "N/A"}}</h1>
+                <p>Available Quantity:{{product?.availableQuantity}}</p>
+                <p>Rs.{{product?.price ? product?.price : "N/A"}}</p>
+                <p>Restaurant-{{product?.restType ? product?.restType : "N/A"}}</p>
+                <p>Total Price:{{product.totalPrice}}</p>
+
+            </div>
+            <div class="action-buttons">
+                <button (click)="removeFromCart(i)">REMOVE</button>
+            </div>
+        </div>
+
+
+    </ng-container>
+
+</div>
+<div class="sum">
+    <b>Total Amount</b>
+    <p>{{sum}}</p>
+
+</div>
+
+
+<button (click)="onClose()" [routerLink]="['/main-page']">Close</button>

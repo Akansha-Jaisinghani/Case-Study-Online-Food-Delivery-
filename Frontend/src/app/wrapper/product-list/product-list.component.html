@@ -1,0 +1,32 @@
+<div class="wrapper">
+    <label><b>Search food item by its name</b></label>
+
+    <input type="search" [(ngModel)]="name" (keyup)="matchFound(name)" placeholder="Enter product name to search for">
+
+</div>
+
+<ng-container  *ngIf="matchedList.length; else noData">
+    <div *ngFor="let product of matchedList; let i=index">
+      <div class="productInfo" *ngIf="type==restaurantTypes.all||product.restType==type">
+            <img src="{{product.imagePath}}" alt="error" width="40%">
+            <div class="details">
+                <p>Product-{{product?.id ? product?.id : "N/A"}}</p>
+                <h1>{{product?.name ? product?.name : "N/A"}}</h1>
+                <p>Available Quantity:{{product?.availableQuantity}}</p>
+                <p>Rs.{{product?.price ? product?.price : "N/A"}}</p>
+                <p>Restaurant-{{product?.restType ? product?.restType : "N/A"}}</p>
+            </div>
+            <div class="action-buttons">
+                <button *ngIf="product.availableQuantity!=0" (click)="addToCart(product.id)">ADD TO CART</button>
+                <button disabled *ngIf="product.availableQuantity==0">ADD TO CART</button>
+                <button (click)="addQuantity(i)">ADD QUANTITY</button>
+                <button (click)="onEdit(i)">EDIT</button>
+            </div>
+        </div>
+
+    </div>
+</ng-container>
+
+<ng-template #noData>
+    <h1>No Data Found!</h1>
+</ng-template>

@@ -1,0 +1,53 @@
+<div class="container">
+  <div style="color: red;" *ngIf="errorMessage">{{ errorMessage }}</div>
+    <form [formGroup]="restaurantForm" (ngSubmit)="updateRestaurant()" >
+      <!-- Restaurant Name -->
+      <nz-form-item>
+        <nz-form-label for="restaurantName" nzRequired>Restaurant Name:</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="restaurantName" placeholder="Enter Restaurant Name" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <!-- Restaurant Description -->
+      <nz-form-item>
+        <nz-form-label for="restaurantDescription" nzRequired>Restaurant Description:</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="description" placeholder="Enter Restaurant Description" />
+        </nz-form-control>
+      </nz-form-item>
+      
+    <!-- Upload Food Document -->
+<div class="file-upload-container">
+    <label class="file-upload-label">
+      <span>Select Food Document</span>
+      <input type="file" (change)="onFoodFileSelected($event)">
+    </label>
+  
+    <div class="file-preview">
+      <img *ngIf="foodImagePreview" [src]="foodImagePreview" alt="Food Document" class="preview-image">
+      <button *ngIf="selectedFoodFile" nz-button nzType="primary" (click)="removeFoodFile()">Remove</button>
+    </div>
+  </div>
+  
+  <!-- Upload License Document -->
+  <div class="file-upload-container">
+    <label class="file-upload-label">
+      <span>Select License Document</span>
+      <input type="file" (change)="onLicenseFileSelected($event)">
+    </label>
+  
+    <div class="file-preview">
+      <img *ngIf="licenseImagePreview" [src]="licenseImagePreview" alt="License Document" class="preview-image">
+      <button *ngIf="selectedLicenseFile" nz-button nzType="primary" (click)="removeLicenseFile()">Remove</button>
+    </div>
+  </div>
+
+      <!-- Add Button -->
+      <nz-form-item>
+        <nz-form-control>
+          <button nz-button nzType="primary" [disabled]="restaurantForm.invalid" type="submit">Update</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </div>

@@ -1,0 +1,53 @@
+<div *ngIf="!isAdminLoggedIn && !isCustomerLoggedIn">
+  <nz-header class="main-header" nz-row nzType="flex" style="background-color:#FF6347">
+    <div>
+      <a href="#default" style="margin-left: 50px;" class="logo"><img src="../assets/images/food.png" width="77px"></a>
+     <!-- <a style="color: white; margin-left: 50px; font-size: 18px; font-weight: bolder;">Online Food Ordering</a>-->
+    </div>
+    <div class="nav-links">
+      <a nz-button nzType="link" routerLink="/signup" routerLinkActive="active">Sign Up</a>
+      <a nz-button nzType="link" routerLink="/login" routerLinkActive="active">Login</a>
+    </div>
+  </nz-header>
+</div>
+
+<div *ngIf="isAdminLoggedIn">
+  <nz-header class="main-header" nz-row nzType="flex" [style.marginLeft.px]="showSidebar ? 140 : 0"  style="background-color:#FF6347">
+    <div>
+      <a href="#default" style="margin-left: 50px;" class="logo" routerLink="/admin/dashboard"><img src="../assets/images/food.png" width="77pxpx"></a>
+      <!--<a style="color: white;margin-left: 50px;font-size: 18px;font-weight: bolder;"
+       routerLink="/admin/dashboard">Online Food Ordering</a>-->
+    </div>
+    <div class="nav-links">
+      <a nz-button nzType="link" routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a>
+      <a nz-button nzType="link" routerLink="/admin/registerRestaurant" routerLinkActive="active">Register Restaurant</a>
+      <a nz-button nzType="link" routerLink="/login" routerLinkActive="active" (click)="logout()">Logout</a>
+    </div>
+  </nz-header>
+
+  <!-- Sidebar 
+  <nz-sider *ngIf="showSidebar" nzWidth="200px" nzTheme="light">
+    <a nz-button nzType="link" routerLink="/admin/registerRestaurant" routerLinkActive="active">Register Restaurant</a>
+    <a nz-button nzType="link" routerLink="/admin/addDish" routerLinkActive="active">Add Dish</a>
+      
+  </nz-sider>-->
+</div>
+
+<div *ngIf="isCustomerLoggedIn">
+  <nz-header class="main-header" nz-row nzType="flex" style="background-color:#FF6347">
+    <div>
+     <!-- <a style="color: white;margin-left: 50px;font-size: 18px;font-weight: bolder;"
+      routerLink="/customer/dashboard">Online Food Ordering</a>-->
+      <a href="#default" style="margin-left: 50px;" class="logo" routerLink="/customer/dashboard"><img src="../assets/images/food.png" width="77pxpx"></a>
+    </div>
+    <div class="nav-links">
+      <a nz-button nzType="link" routerLink="/customer/dashboard" routerLinkActive="active">Dashboard</a>
+      <a nz-button nzType="link" routerLink="/login" routerLinkActive="active" (click)="logout()">Logout</a>
+    </div>
+  </nz-header>
+</div>
+
+
+
+
+<router-outlet></router-outlet>

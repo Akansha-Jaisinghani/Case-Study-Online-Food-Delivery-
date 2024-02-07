@@ -1,0 +1,57 @@
+<div class="container">
+    <div style="color: red;" *ngIf="errorMessage">{{ errorMessage }}</div>
+    <form [formGroup]="dishForm" (ngSubmit)="onSubmit()">
+      
+       
+            <nz-form-label for="upload_image" *ngIf="selectedFile" nzRequired  class="image-label"> 
+                <img class="profile" [src]="imagePreview" alt="profile" /></nz-form-label>
+            <nz-form-control>
+            <input type="file" nzType="primary" id="upload_image" 
+            accept="image/x-png,image/gif,image/jpeg" (change)="onFileSelected($event)">
+            <!--<button nz-button></button> -->
+            </nz-form-control>
+        
+
+      <!-- Food Name -->
+      <nz-form-item>
+        <nz-form-label for="foodName" nzRequired>Food Name:</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="foodName" placeholder="Enter Food Name" />
+        </nz-form-control>
+      </nz-form-item>
+  
+      <!-- Price -->
+      <nz-form-item>
+        <nz-form-label for="price" nzRequired>Price:</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="price" placeholder="Enter Price" />
+        </nz-form-control>
+      </nz-form-item>
+  
+      <!-- Quantity 
+      <nz-form-item>
+        <nz-form-label for="quantity" nzRequired>Quantity:</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="quantity" placeholder="Enter Quantity" />
+        </nz-form-control>
+      </nz-form-item>-->
+  
+      <!-- Restaurant Name Dropdown -->
+      <nz-form-item>
+        <nz-form-label for="restaurantName" nzRequired>Restaurant Name:</nz-form-label>
+        <nz-form-control>
+          <!-- Replace this with your actual data source -->
+          <nz-select nzPlaceHolder="Select Restaurant" formControlName="restaurantName">
+            <nz-option *ngFor="let restaurant of restaurants" [nzLabel]="restaurant.name" [nzValue]="restaurant.id"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+  
+      <!-- Add Button -->
+      <nz-form-item>
+        <nz-form-control>
+          <button nz-button nzType="primary" [disabled]="dishForm.invalid" type="submit">Add Food Item</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </div>

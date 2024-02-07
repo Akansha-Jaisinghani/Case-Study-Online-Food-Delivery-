@@ -1,0 +1,84 @@
+<div class="container">
+  <div style="color: red;" *ngIf="errorMessage">{{ errorMessage }}</div>
+    <form [formGroup]="restaurantForm" >
+      <!-- Restaurant Name -->
+      <nz-form-item>
+        <nz-form-label for="restaurantName" nzRequired>Restaurant Name:</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="restaurantName" placeholder="Enter Restaurant Name" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <!-- Restaurant Description -->
+      <nz-form-item>
+        <nz-form-label for="restaurantDescription" nzRequired>Restaurant Description:</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="description" placeholder="Enter Restaurant Description" />
+        </nz-form-control>
+      </nz-form-item>
+
+
+      
+      <nz-upload nzAction="" nzType="file" accept=".doc, .pdf,.docx" (nzChange)="onFoodFileSelected($event)">
+        <button nz-button>
+          <span nz-icon nzType="upload"></span>
+          Upload Food doc
+        </button>
+      </nz-upload>
+
+
+
+   <!--<div *ngIf="foodDocumentUrl">
+    
+        <span>
+          <a [href]="foodDocumentUrl" nz-tooltip [nzTitle]="'Download'">
+            <i nz-icon nzType="download"></i>
+          </a>
+          <i nz-icon nzType="delete" (click)="removeFoodFile()"></i>
+        </span>
+   </div>-->
+
+      <nz-upload nzAction="" nzType="file" (nzChange)="onLicenseFileSelected($event)">
+        <button style="width: 165px;" nz-button>
+          <span  nz-icon nzType="upload"></span>
+          Upload License doc
+        </button>
+      </nz-upload>
+     
+
+      <!--<div *ngIf="licenseDocumentUrl">
+        <a [href]="licenseDocumentUrl" download="license_document"> <span nz-icon nzType="download"></span> Download Food Document</a>
+     </div>-->
+  
+    <!-- Upload Food Document -->
+   <!-- <div class="file-upload-container">
+      <label class="file-upload-label">
+        <span>Select Food Document</span>
+        <input type="file" accept="application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" (change)="onFoodFileSelected($event)">
+      </label>
+      <img *ngIf="selectedFoodFile" [src]="foodDocumentUrl ? foodDocumentUrl : ''" alt="Food Document" class="file-preview">
+      <a *ngIf="selectedFoodFile" [href]="foodDocumentUrl" download="food_document">Download Food Document</a>
+      <button *ngIf="selectedFoodFile" nz-button nzType="primary" (click)="removeFoodFile()">Remove</button>
+
+    </div> -->
+
+    <!-- Upload License Document 
+    <div class="file-upload-container">
+      <label class="file-upload-label">
+        <span>Select License Document</span>
+        <input type="file" accept="application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" (change)="onLicenseFileSelected($event)">
+      </label>
+
+      <img *ngIf="selectedLicenseFile" [src]="licenseImagePreview" alt="License Document" class="file-preview">
+      <button *ngIf="selectedLicenseFile" nz-button nzType="primary" (click)="removeLicenseFile()">Remove</button>
+  
+    </div>-->
+
+      <!-- Add Button -->
+      <nz-form-item>
+        <nz-form-control>
+          <button nz-button nzType="primary" [disabled]="restaurantForm.invalid" (click)="onAddRestaurant()" type="submit">Add Restaurant</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </div>

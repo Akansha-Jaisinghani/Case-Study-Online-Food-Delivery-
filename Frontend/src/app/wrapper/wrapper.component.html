@@ -1,0 +1,40 @@
+<div class="container">
+
+    <div *ngIf="!onFormShow && !onCartShow" class="header">
+      <a href="#default" class="logo"><img src="../assets/images/food.png" width="100px"></a>
+      <div class="header-right">
+       <a > <div class="dropdown">
+          <select [(ngModel)]="type" *ngIf="!onFormShow && !onCartShow">
+            <option [value]="restaurantTypes.all">All</option>
+            <option [value]="restaurantTypes.type1">Restaurant-A</option>
+            <option [value]="restaurantTypes.type2">Restaurant-B</option>
+            <option [value]="restaurantTypes.type3">Restaurant-C</option>
+            <option [value]="restaurantTypes.type4">Restaurant-D</option>
+          </select>
+
+        </div></a>
+
+        <a  (click)="onAdd()" class="func">Add Products</a>
+        <a *ngIf="!onFormShow" (click)="showCart()" class="func">Show Cart</a>
+        <img src="../assets/images/cart.png" width="30px" class="cart">
+       <!-- <a class="func"><app-logout></app-logout></a>-->
+
+
+      </div>
+    </div>
+
+    <div class="sec1">
+  
+  
+  
+  
+  
+    <app-product-list *ngIf="!onFormShow && !onCartShow" [products]="products" [type]="type" (editData)="onEdit($event)"
+      (add)="addData($event)"></app-product-list><br><br>
+    <app-cart *ngIf="onCartShow" (cartClose)="onClose($event)" [products]="products" [cartArray]="cartArray"></app-cart>
+    <app-add-product *ngIf="onFormShow" (array)="onclickSubmit($event)" (arrayUpdate)="onUpdate($event)"
+      (cancel)="onCancel($event)"></app-add-product>
+  </div>
+  
+  </div>
+  
